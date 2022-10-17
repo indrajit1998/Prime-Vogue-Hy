@@ -1,0 +1,76 @@
+# This is a basic workflow to help you get started with Actions
+Install VS Code
+Install Prettier extension
+Install ESLint extension
+
+Commits
+Commits SHOULD be made for every significant change in the codebase.
+
+Each commit SHOULD address one and only one concern at a time.
+
+# Wrong
+Fix errors on search page and add loader
+
+# Correct
+Fix errors on search page
+Add loader when awating search result
+Do not end the subject line with a period.
+
+# Wrong
+Open the pod bay doors.
+
+# Correct
+Open the pod bay doors
+You may follow Conventional Commits guidelines to explicitly specify the commit type.
+
+FIX: Resolve errors on search page
+FEAT: Add loader when awating search result
+
+Maintain the coding styles as described in the following two guides.
+
+Airbnb JavaScript Style Guide
+
+Airbnb React/JSX style Guide
+
+This project is written and maintained in Typescript, so typescript rules must be followed. We are using ESLint and Prettier to maintain code quality and proper styling.
+
+This project is configured to automatically format code on paste and on save in VS Code, as well as code highligting based on configured rules using extentions mentioned earlier.
+
+You may manually check code quality and apply fixes by running the following commands.
+
+# To check formatting issues, run
+yarn prettier
+
+# To fix formatting issues, run
+yarn prettier:fix
+
+# To check linting issues, run
+yarn lint
+
+# To fix linting issues, run
+yarn lint:fix
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
