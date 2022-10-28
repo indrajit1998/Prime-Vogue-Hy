@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 50
     },
     btn: {
-        backgroundColor: "#FFD9D8",
+        backgroundColor: "#FF9A9A",
         width: 55,
         aspectRatio: 1 / 1,
         borderRadius: 15,
