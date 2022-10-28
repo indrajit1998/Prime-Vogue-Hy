@@ -30,7 +30,7 @@ const data = [
 
 const { width } = Dimensions.get("window")
 
-export default function OnBoarding() {
+export default function OnBoarding({ navigation }: any) {
     const renderItem = ({ item }: any) => (
         <Container style={styles.container}>
             <View style={{ alignItems: "center" }}>
@@ -38,7 +38,7 @@ export default function OnBoarding() {
                 <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.description}>{item.description}</Text>
             </View>
-            <TouchableHighlight underlayColor="#FFD9D8" style={styles.btn}>
+            <TouchableHighlight onPress={() => { navigation.navigate("Login") }} underlayColor="#FFD9D8" style={styles.btn}>
                 <Icon name="chevron-forward" size={25} color="#fff" />
             </TouchableHighlight>
         </Container>
