@@ -1,12 +1,10 @@
-import { View, Text, Button, StyleSheet, Image, TextInput, Dimensions } from 'react-native'
+import { View, Text, Button, StyleSheet, Image, TextInput, Dimensions, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import Container from '../components/Container'
 import { CONTAINER_OUTER_SPACING } from '../config/constants'
 import LoginScreenImage from '../../assets/LoginScreenImage.png'
-import Attherate from '../../assets/attherate.png'
-import Lock from '../../assets/lock.png'
-import Icon from  '@expo/vector-icons/MaterialIcons'
- export default function Login({ navigation }: any) {
+import Icon from '@expo/vector-icons/MaterialIcons'
+export default function Login({ navigation }: any) {
 
     const [email, onChangeEmail] = useState('')
     const [password, onChangePassword] = useState('')
@@ -28,35 +26,39 @@ import Icon from  '@expo/vector-icons/MaterialIcons'
         }
     }
     return (
-        <Container style={styles.container}>
-            <Image source={LoginScreenImage} resizeMode="cover" style={styles.Loginimmg} />
-            <View style={styles.logincomp}>
-                <Text style={styles.logintext}>Login</Text>
-               
+        <ScrollView>
 
-                {error && <Text style={styles.error}>{error}</Text>}
-                {success && <Text style={styles.success}>{success}</Text>}
-                <View style={styles.inputcomp}>
-                    {/* <Image source={Attherate} resizeMode="cover" style={styles.attherate} /> */}
-                    <Icon name="mail" color='gray' size={22} style={styles.attherate}/>
-                    <TextInput placeholder="Email Id" style={styles.input1} value={email}  onChangeText={onChangeEmail}></TextInput>
-                </View>
 
-                <View style={styles.inputcomp}>
-                <Icon name="lock" color='gray' size={22} style={styles.attherate}/>
-                    <View>
-                        <TextInput secureTextEntry={true} placeholder="Password" style={styles.input2} value={password} onChangeText={onChangePassword}></TextInput>
-                        <Text style={styles.forgot} onPress={() => { navigation.navigate("ForgotPassword") }} >forgot?</Text>
+            <Container style={styles.container}>
+                <Image source={LoginScreenImage} resizeMode="cover" style={styles.Loginimmg} />
+                <View style={styles.logincomp}>
+                    <Text style={styles.logintext}>Login</Text>
 
+
+                    {error && <Text style={styles.error}>{error}</Text>}
+                    {success && <Text style={styles.success}>{success}</Text>}
+                    <View style={styles.inputcomp}>
+
+                        <Icon name="mail" color='gray' size={22} style={styles.attherate} />
+                        <TextInput placeholder="Email Id" style={styles.input1} value={email} onChangeText={onChangeEmail}></TextInput>
                     </View>
-                </View>
-                <View>
-                    <Text style={styles.loginbtn} onPress={handleSubmit}>Login</Text>
-                </View>
-                <Text style={styles.forRegister}>New to Prime Vogue?  <Text onPress={() => { navigation.navigate("Signup") }} style={styles.forRegisterlink}>Register</Text></Text>
-            </View>
 
-        </Container>
+                    <View style={styles.inputcomp}>
+                        <Icon name="lock" color='gray' size={22} style={styles.attherate} />
+                        <View>
+                            <TextInput secureTextEntry={true} placeholder="Password" style={styles.input2} value={password} onChangeText={onChangePassword}></TextInput>
+                            <Text style={styles.forgot} onPress={() => { navigation.navigate("ForgotPassword") }} >forgot?</Text>
+
+                        </View>
+                    </View>
+                    <View>
+                        <Text style={styles.loginbtn} onPress={handleSubmit}>Login</Text>
+                    </View>
+                    <Text style={styles.forRegister}>New to Prime Vogue?  <Text onPress={() => { navigation.navigate("Signup") }} style={styles.forRegisterlink}>Register</Text></Text>
+                </View>
+
+            </Container>
+        </ScrollView>
     )
 }
 
@@ -91,12 +93,13 @@ const styles = StyleSheet.create({
     },
     inputcomp: {
         flex: 1,
+        width:'100%',
         flexDirection: 'row',
         alignItems: 'center',
         borderBottomWidth: 1,
         borderBottomColor: 'gray',
-        paddingBottom: 20,
-        marginTop: 50
+        paddingBottom: 0,
+        marginTop: 20
     },
     attherate: {
         width: 22,
@@ -117,10 +120,10 @@ const styles = StyleSheet.create({
     input2: {
         height: 50,
         fontSize: 16,
-        width: '100%',
-        marginVertical: 10,
+        width:width-80,
+        marginVertical: 0,
         marginLeft: 10,
-        paddingRight: 90
+        paddingRight: 90,
     },
     logintext: {
         fontSize: 30,
@@ -149,9 +152,9 @@ const styles = StyleSheet.create({
     // forgot
     forgot: {
         position: 'absolute',
-        right: 25,
-        top: 20,
-        fontSize: 16,
+        right: 0,
+        top: 15,
+        fontSize: 14,
         color: 'blue',
     }
 })
