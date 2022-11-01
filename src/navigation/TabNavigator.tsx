@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: theme.colors.background,
         alignItems: 'center',
-        paddingLeft: 24
+        paddingLeft: 24,
+        elevation: 0,
     },
     logoWrapper: {
         flex: 1,
