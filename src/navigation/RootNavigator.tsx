@@ -7,6 +7,7 @@ import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 import ForgotPassword from '../screens/ForgotPassword';
 import EmailSendConfirmation from '../screens/EmailSendConfirmation';
+import TabNavigator from './TabNavigator';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -19,6 +20,8 @@ export default function RootNavigator() {
             <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             <Stack.Screen name="EmailSendConfirmation" component={EmailSendConfirmation} />
+            <Stack.Screen name="Tabs" component={TabNavigator} />
+
         </>
     );
 

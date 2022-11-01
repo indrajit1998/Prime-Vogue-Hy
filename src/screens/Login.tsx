@@ -1,9 +1,10 @@
-import { View, Text, Button, StyleSheet, Image, TextInput, Dimensions, ScrollView } from 'react-native'
+import { View, Text, Button, StyleSheet, Image, TextInput, Dimensions, ScrollView, TouchableHighlight } from 'react-native'
 import React, { useState } from 'react'
 import Container from '../components/Container'
 import { CONTAINER_OUTER_SPACING } from '../config/constants'
 import LoginScreenImage from '../../assets/LoginScreenImage.png'
 import Icon from '@expo/vector-icons/MaterialIcons'
+import theme from '../config/theme'
 export default function Login({ navigation }: any) {
 
     const [email, onChangeEmail] = useState('')
@@ -11,19 +12,19 @@ export default function Login({ navigation }: any) {
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
 
-    const handleSubmit = async (e: { preventDefault: () => void }) => {
-        e.preventDefault()
-        setError('')
-        setSuccess('')
+    const handleSubmit = async () => {
+        // setError('')
+        // setSuccess('')
 
-        const isValidEmail = /\S+@\S+\.\S+/.test(email);
-        if (!isValidEmail) {
-            setError("Invalid Email")
-        } else if (!password) {
-            setError("Password Required")
-        } else {
-            setSuccess("Done")
-        }
+        // const isValidEmail = /\S+@\S+\.\S+/.test(email);
+        // if (!isValidEmail) {
+        //     setError("Invalid Email")
+        // } else if (!password) {
+        //     setError("Password Required")
+        // } else {
+        //     setSuccess("Done")
+        // }
+        navigation.navigate("Tabs")
     }
     return (
         <ScrollView>
@@ -51,9 +52,9 @@ export default function Login({ navigation }: any) {
 
                         </View>
                     </View>
-                    <View>
-                        <Text style={styles.loginbtn} onPress={handleSubmit}>Login</Text>
-                    </View>
+                    <TouchableHighlight underlayColor={theme.colors.btnUnderlaycolor} onPress={handleSubmit} style={styles.loginbtn}>
+                        <Text style={styles.loginText}>Login</Text>
+                    </TouchableHighlight>
                     <Text style={styles.forRegister}>New to Prime Vogue?  <Text onPress={() => { navigation.navigate("Signup") }} style={styles.forRegisterlink}>Register</Text></Text>
                 </View>
 
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
     },
     inputcomp: {
         flex: 1,
-        width:'100%',
+        width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
         borderBottomWidth: 1,
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
     input2: {
         height: 50,
         fontSize: 16,
-        width:width-80,
+        width: width - 80,
         marginVertical: 0,
         marginLeft: 10,
         paddingRight: 90,
@@ -131,16 +132,12 @@ const styles = StyleSheet.create({
         marginBottom: 0
     },
     loginbtn: {
-        backgroundColor: '#fea9a9',
-        color: 'white',
-        width: '100%',
-        height: 50,
-        textAlign: 'center',
-        alignSelf: 'center',
-        borderRadius: 9,
-        paddingTop: 11,
-        marginTop: 20,
-        fontSize: 16
+        backgroundColor: theme.colors.btnColor,
+        padding: 15,
+        marginTop: 15,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 8
     },
     forRegister: {
         marginTop: 60,
@@ -156,5 +153,10 @@ const styles = StyleSheet.create({
         top: 15,
         fontSize: 14,
         color: 'blue',
+    },
+    loginText: {
+        color: 'white',
+        fontWeight: '500',
+        fontSize: 15
     }
 })

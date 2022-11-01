@@ -6,7 +6,9 @@ const theme = {
         secondary: '#E21221',
         accent: '#f1c40f',
         background: '#fff',
-        textColor: "#000"
+        textColor: "#000",
+        btnColor: "#FE9A9A",
+        btnUnderlaycolor: "#FFD9D8"
     },
 };
 
