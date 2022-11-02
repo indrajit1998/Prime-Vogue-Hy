@@ -76,145 +76,143 @@ const typesData: any = [
 export default function Home() {
     return (
         <Container>
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={styles.searchContainer}>
-                    <Ionicons style={styles.searchIcon} name='search' size={20} color="grey" />
-                    <TextInput
-                        placeholder='Search for products'
-                        style={styles.input}
-                    />
-                </View>
-                {/* carousel */}
+            <View style={styles.searchContainer}>
+                <Ionicons style={styles.searchIcon} name='search' size={20} color="grey" />
+                <TextInput
+                    placeholder='Search for products'
+                    style={styles.input}
+                />
+            </View>
+            {/* carousel */}
+            <View>
+                <SwiperFlatList
+                    autoplay
+                    autoplayDelay={3}
+                    autoplayLoop
+                    autoplayLoopKeepAnimation
+                    showPagination
+                    data={carouselData}
+                    paginationDefaultColor="white"
+                    paginationStyleItem={{ height: 8, width: 8, margin: 6, marginLeft: 0 }}
+                    paginationStyleItemActive={{ width: 40, height: 8 }}
+                    renderItem={({ item }) => (
+                        <View style={styles.carouselImageContainer}>
+                            <Image
+                                source={{ uri: item.image }}
+                                resizeMode="cover"
+                                style={styles.carouselImage}
+                            />
+                        </View>
+                    )}
+                />
+            </View>
+            {/* end carousel */}
+
+            <View>
+                <FlatList
+                    data={typesData}
+                    horizontal
+                    renderItem={({ item }) => (
+                        <View style={{ alignItems: "center", marginVertical: 5 }}>
+                            <Image source={{ uri: item.image }}
+                                resizeMode="cover"
+                                style={styles.typesImage}
+                            />
+                            <Text>{item.title}</Text>
+                        </View>
+                    )}
+                />
+            </View>
+            {/* start */}
+            <View style={styles.productContainer}>
+                <Image source={Girl} style={styles.girlImage} />
                 <View>
-                    <SwiperFlatList
-                        autoplay
-                        autoplayDelay={3}
-                        autoplayLoop
-                        autoplayLoopKeepAnimation
-                        showPagination
-                        data={carouselData}
-                        paginationDefaultColor="white"
-                        paginationStyleItem={{ height: 8, width: 8, margin: 6, marginLeft: 0 }}
-                        paginationStyleItemActive={{ width: 40, height: 8 }}
-                        renderItem={({ item }) => (
-                            <View style={styles.carouselImageContainer}>
-                                <Image
-                                    source={{ uri: item.image }}
-                                    resizeMode="cover"
-                                    style={styles.carouselImage}
-                                />
-                            </View>
-                        )}
-                    />
+                    <Text style={styles.offerStartsAt}>Start 599</Text>
+                    <Text style={[styles.viewall, { fontSize: 20 }]}>view all</Text>
                 </View>
-                {/* end carousel */}
+            </View>
+            <View style={{ padding: 10, marginTop: -40 }}>
+                <FlatList
+                    data={[1, 2, 3, 4]}
+                    renderItem={() => (
+                        <ProductCard width={width / 2 - 15} height={200} />
+                    )}
+                    numColumns={2}
+                />
+            </View>
+            {/* end */}
+            {/* products */}
+            <View style={styles.productGroup}>
+                <View style={styles.productGroupTop}>
+                    <View style={styles.productGroupHeader}>
+                        <Text style={styles.productGroupTitle}>Sponcer Product</Text>
+                        <Text style={styles.viewall}>view all</Text>
+                    </View>
+                    <Text style={styles.productGroupTagline}>Furniture for every corner in your home</Text>
 
+                </View>
+                <FlatList
+                    horizontal
+                    style={{ paddingLeft: 15 }}
+                    showsHorizontalScrollIndicator={false}
+                    data={[1, 2, 4, 4, 5, 6]}
+                    renderItem={() => (<ProductCard width={150} height={200} />)}
+                />
+            </View>
+            {/* start */}
+            <View style={styles.productContainer}>
+                <Image source={Girl} style={styles.girlImage} />
                 <View>
-                    <FlatList
-                        data={typesData}
-                        horizontal
-                        renderItem={({ item }) => (
-                            <View style={{ alignItems: "center", marginVertical: 5 }}>
-                                <Image source={{ uri: item.image }}
-                                    resizeMode="cover"
-                                    style={styles.typesImage}
-                                />
-                                <Text>{item.title}</Text>
-                            </View>
-                        )}
-                    />
+                    <Text style={styles.offerStartsAt}>Start 599</Text>
+                    <Text style={[styles.viewall, { fontSize: 20 }]}>view all</Text>
                 </View>
-                {/* start */}
-                <View style={styles.productContainer}>
-                    <Image source={Girl} style={styles.girlImage} />
-                    <View>
-                        <Text style={styles.offerStartsAt}>Start 599</Text>
-                        <Text style={[styles.viewall, { fontSize: 20 }]}>view all</Text>
+            </View>
+            <View style={{ padding: 10, marginTop: -40 }}>
+                <FlatList
+                    data={[1, 2, 3, 4]}
+                    renderItem={() => (
+                        <ProductCard width={width / 2 - 15} height={200} />
+                    )}
+                    numColumns={2}
+                />
+            </View>
+            {/* end */}
+            {/* products */}
+            <View style={styles.productGroup}>
+                <View style={styles.productGroupTop}>
+                    <View style={styles.productGroupHeader}>
+                        <Text style={styles.productGroupTitle}>Sponcer Product</Text>
+                        <Text style={styles.viewall}>view all</Text>
                     </View>
-                </View>
-                <View style={{ padding: 10, marginTop: -40 }}>
-                    <FlatList
-                        data={[1, 2, 3, 4]}
-                        renderItem={() => (
-                            <ProductCard width={width / 2 - 15} height={200} />
-                        )}
-                        numColumns={2}
-                    />
-                </View>
-                {/* end */}
-                {/* products */}
-                <View style={styles.productGroup}>
-                    <View style={styles.productGroupTop}>
-                        <View style={styles.productGroupHeader}>
-                            <Text style={styles.productGroupTitle}>Sponcer Product</Text>
-                            <Text style={styles.viewall}>view all</Text>
-                        </View>
-                        <Text style={styles.productGroupTagline}>Furniture for every corner in your home</Text>
+                    <Text style={styles.productGroupTagline}>Furniture for every corner in your home</Text>
 
+                </View>
+                <FlatList
+                    horizontal
+                    style={{ paddingLeft: 15 }}
+                    showsHorizontalScrollIndicator={false}
+                    data={[1, 2, 4, 4, 5, 6]}
+                    renderItem={() => (<ProductCard width={150} height={200} />)}
+                />
+            </View>
+            {/* products */}
+            <View style={styles.productGroup}>
+                <View style={styles.productGroupTop}>
+                    <View style={styles.productGroupHeader}>
+                        <Text style={styles.productGroupTitle}>Sponcer Product</Text>
+                        <Text style={styles.viewall}>view all</Text>
                     </View>
-                    <FlatList
-                        horizontal
-                        style={{ paddingLeft: 15 }}
-                        showsHorizontalScrollIndicator={false}
-                        data={[1, 2, 4, 4, 5, 6]}
-                        renderItem={() => (<ProductCard width={150} height={200} />)}
-                    />
-                </View>
-                {/* start */}
-                <View style={styles.productContainer}>
-                    <Image source={Girl} style={styles.girlImage} />
-                    <View>
-                        <Text style={styles.offerStartsAt}>Start 599</Text>
-                        <Text style={[styles.viewall, { fontSize: 20 }]}>view all</Text>
-                    </View>
-                </View>
-                <View style={{ padding: 10, marginTop: -40 }}>
-                    <FlatList
-                        data={[1, 2, 3, 4]}
-                        renderItem={() => (
-                            <ProductCard width={width / 2 - 15} height={200} />
-                        )}
-                        numColumns={2}
-                    />
-                </View>
-                {/* end */}
-                {/* products */}
-                <View style={styles.productGroup}>
-                    <View style={styles.productGroupTop}>
-                        <View style={styles.productGroupHeader}>
-                            <Text style={styles.productGroupTitle}>Sponcer Product</Text>
-                            <Text style={styles.viewall}>view all</Text>
-                        </View>
-                        <Text style={styles.productGroupTagline}>Furniture for every corner in your home</Text>
+                    <Text style={styles.productGroupTagline}>Furniture for every corner in your home</Text>
 
-                    </View>
-                    <FlatList
-                        horizontal
-                        style={{ paddingLeft: 15 }}
-                        showsHorizontalScrollIndicator={false}
-                        data={[1, 2, 4, 4, 5, 6]}
-                        renderItem={() => (<ProductCard width={150} height={200} />)}
-                    />
                 </View>
-                {/* products */}
-                <View style={styles.productGroup}>
-                    <View style={styles.productGroupTop}>
-                        <View style={styles.productGroupHeader}>
-                            <Text style={styles.productGroupTitle}>Sponcer Product</Text>
-                            <Text style={styles.viewall}>view all</Text>
-                        </View>
-                        <Text style={styles.productGroupTagline}>Furniture for every corner in your home</Text>
-
-                    </View>
-                    <FlatList
-                        horizontal
-                        style={{ paddingLeft: 15 }}
-                        showsHorizontalScrollIndicator={false}
-                        data={[1, 2, 4, 4, 5, 6]}
-                        renderItem={() => (<ProductCard width={150} height={200} />)}
-                    />
-                </View>
-            </ScrollView>
+                <FlatList
+                    horizontal
+                    style={{ paddingLeft: 15 }}
+                    showsHorizontalScrollIndicator={false}
+                    data={[1, 2, 4, 4, 5, 6]}
+                    renderItem={() => (<ProductCard width={150} height={200} />)}
+                />
+            </View>
         </Container>
     )
 }

@@ -34,7 +34,7 @@ const { width } = Dimensions.get("window")
 
 export default function OnBoarding({ navigation }: any) {
     const renderItem = ({ item }: any) => (
-        <Container style={styles.container}>
+        <View style={styles.container}>
             <View style={{ alignItems: "center" }}>
                 <Image source={item.image} resizeMode="cover" style={styles.img} />
                 <Text style={styles.title}>{item.title}</Text>
@@ -43,7 +43,7 @@ export default function OnBoarding({ navigation }: any) {
             <TouchableHighlight onPress={() => { navigation.navigate("Login") }} underlayColor="#FFD9D8" style={styles.btn}>
                 <Icon name="chevron-forward" size={25} color="#fff" />
             </TouchableHighlight>
-        </Container>
+        </View>
     )
 
 
@@ -65,7 +65,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "flex-start",
         padding: CONTAINER_OUTER_SPACING,
-        paddingTop: 50
+        paddingTop: 50,
+        backgroundColor: theme.colors.background
     },
     img: {
         marginTop: 20
