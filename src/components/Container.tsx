@@ -16,6 +16,7 @@ const Container = ({ children, style }: Props) => (
         contentContainerStyle={[{ flexGrow: 1 }, style]}
         keyboardShouldPersistTaps="handled"
         nestedScrollEnabled
+        showsVerticalScrollIndicator={false}
     >
         {children}
     </KeyboardAwareScrollView>
