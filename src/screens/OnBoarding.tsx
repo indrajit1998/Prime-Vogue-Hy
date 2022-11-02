@@ -5,6 +5,8 @@ import ImgA from '../../assets/a.png'
 import ImgB from '../../assets/b.png'
 import ImgC from '../../assets/c.png'
 import theme from '../config/theme'
+import { SwiperFlatList } from 'react-native-swiper-flatlist';
+
 import { CONTAINER_OUTER_SPACING } from '../config/constants'
 import Icon from '@expo/vector-icons/Ionicons'
 const data = [
@@ -46,10 +48,12 @@ export default function OnBoarding({ navigation }: any) {
 
 
     return (
-        <FlatList
-            horizontal={true}
-            pagingEnabled={true}
+        <SwiperFlatList
+            showPagination
             data={data}
+            paginationActiveColor={theme.colors.btnColor}
+            paginationStyleItem={{ height: 8, width: 8, margin: -120, marginLeft: 0 }}
+            paginationStyleItemActive={{ width: 40, height: 8 }}
             renderItem={renderItem}
         />
     )
@@ -59,8 +63,9 @@ const styles = StyleSheet.create({
     container: {
         width,
         alignItems: "center",
-        justifyContent: "space-between",
-        padding: CONTAINER_OUTER_SPACING
+        justifyContent: "flex-start",
+        padding: CONTAINER_OUTER_SPACING,
+        paddingTop: 50
     },
     img: {
         marginTop: 20
@@ -90,6 +95,8 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         alignItems: "center",
         justifyContent: "center",
-        alignSelf: "flex-end",
+        position: "absolute",
+        bottom: 24,
+        right: 24
     }
 })
