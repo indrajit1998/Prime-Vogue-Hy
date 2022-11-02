@@ -40,7 +40,8 @@ export default function ForgotPassword({ navigation }: any) {
 }
 const styles = StyleSheet.create({
     container: {
-        padding: CONTAINER_OUTER_SPACING
+        padding: CONTAINER_OUTER_SPACING,
+        paddingTop: 60
     },
     main: {
         flex: 1,

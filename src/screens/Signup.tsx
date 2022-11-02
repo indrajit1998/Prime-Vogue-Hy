@@ -1,9 +1,10 @@
-import { View, Text, Button, StyleSheet, Dimensions, Image, TextInput, ScrollView,KeyboardAvoidingView } from 'react-native'
+import { View, Text, Button, StyleSheet, Dimensions, Image, TextInput, TouchableHighlight } from 'react-native'
 import React, { useState } from 'react'
 import Container from '../components/Container'
 import { CONTAINER_OUTER_SPACING } from '../config/constants'
 import SignUpScreenImage from '../../assets/SignUpScreenImage.png'
-import Icon from  '@expo/vector-icons/MaterialIcons'
+import Icon from '@expo/vector-icons/MaterialIcons'
+import theme from '../config/theme'
 export default function Signup({ navigation }: any) {
     const [email, onChangeEmail] = useState('')
     const [password, onChangePassword] = useState('')
@@ -24,49 +25,46 @@ export default function Signup({ navigation }: any) {
             setError("Password Required")
         } else if (!fullname) {
             setError("FullName Required")
-        }else if (!companyname) {
+        } else if (!companyname) {
             setError("companyname Required")
-        }else {
+        } else {
             setSuccess("Done")
         }
     }
     return (
-        <ScrollView>
-            <Container style={styles.container}>
-          
-                <Image source={SignUpScreenImage} resizeMode="cover" style={styles.Loginimmg} />
-                <View style={styles.logincomp}>
-                    <Text style={styles.logintext}>Sign Up</Text>
-                    {error && <Text style={styles.error}>{error}</Text>}
+        <Container style={styles.container}>
+
+            <Image source={SignUpScreenImage} resizeMode="cover" style={styles.Loginimmg} />
+            <View style={styles.logincomp}>
+                <Text style={styles.logintext}>Sign Up</Text>
+                {error && <Text style={styles.error}>{error}</Text>}
                 {success && <Text style={styles.success}>{success}</Text>}
-                    <View style={styles.inputcomp}>
-                    <Icon name="mail" color='gray' size={22} style={styles.attherate}/>
-                        <TextInput placeholder="Email Id" style={styles.input1} value={email} onChangeText={onChangeEmail}></TextInput>
-                    </View>
-
-                    <View style={styles.inputcomp}>
-                    <Icon name="lock" color='gray' size={22} style={styles.attherate}/>
-                        <TextInput secureTextEntry={true} placeholder="Password" style={styles.input1} value={password} onChangeText={onChangePassword}></TextInput>
-                    </View>
-
-                    <View style={styles.inputcomp}>
-                    <Icon name="person" color='gray' size={22} style={styles.attherate}/>
-                        <TextInput placeholder="Full Name" style={styles.input1} value={fullname} onChangeText={onChangeFullname}></TextInput>
-                    </View>
-
-                    <View style={styles.inputcomp}>
-                    <Icon name="store" color='gray' size={22} style={styles.attherate}/>
-                        <TextInput placeholder="Company Name" style={styles.input1} value={companyname} onChangeText={onChangeCompanyname}></TextInput>
-                    </View>
-
-                    <View>
-                        <Text style={styles.loginbtn} onPress={handleSubmit}>Sign Up</Text>
-                    </View>
-                    <Text style={styles.forRegister}>already have an account? <Text onPress={() => { navigation.navigate("Login") }} style={styles.forRegisterlink}>Login</Text></Text>
+                <View style={styles.inputcomp}>
+                    <Icon name="mail" color='gray' size={22} style={styles.attherate} />
+                    <TextInput placeholder="Email Id" style={styles.input1} value={email} onChangeText={onChangeEmail}></TextInput>
                 </View>
-              
-            </Container>
-        </ScrollView>
+
+                <View style={styles.inputcomp}>
+                    <Icon name="lock" color='gray' size={22} style={styles.attherate} />
+                    <TextInput secureTextEntry={true} placeholder="Password" style={styles.input1} value={password} onChangeText={onChangePassword}></TextInput>
+                </View>
+
+                <View style={styles.inputcomp}>
+                    <Icon name="person" color='gray' size={22} style={styles.attherate} />
+                    <TextInput placeholder="Full Name" style={styles.input1} value={fullname} onChangeText={onChangeFullname}></TextInput>
+                </View>
+
+                <View style={styles.inputcomp}>
+                    <Icon name="store" color='gray' size={22} style={styles.attherate} />
+                    <TextInput placeholder="Company Name" style={styles.input1} value={companyname} onChangeText={onChangeCompanyname}></TextInput>
+                </View>
+                <TouchableHighlight underlayColor={theme.colors.btnUnderlaycolor} onPress={handleSubmit} style={styles.loginbtn}>
+                    <Text style={styles.loginText}>Signup</Text>
+                </TouchableHighlight>
+                <Text style={styles.forRegister}>already have an account? <Text onPress={() => { navigation.navigate("Login") }} style={styles.forRegisterlink}>Login</Text></Text>
+            </View>
+
+        </Container>
     )
 }
 
@@ -76,7 +74,7 @@ const styles = StyleSheet.create({
     container: {
         width,
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         padding: CONTAINER_OUTER_SPACING,
     },
     error: {
@@ -87,12 +85,12 @@ const styles = StyleSheet.create({
     },
     Loginimmg: {
         width,
-        height: 350,
+        height: 300,
         marginBottom: 0
     },
     logincomp: {
         width: '100%',
-        marginBottom: 80
+        // marginBottom: 80
 
     },
     inputcomp: {
@@ -124,22 +122,23 @@ const styles = StyleSheet.create({
     logintext: {
         fontSize: 30,
         fontWeight: 'bold',
-        marginBottom: 10
+        // marginBottom: 10
+    },
+    loginText: {
+        color: 'white',
+        fontWeight: '500',
+        fontSize: 15
     },
     loginbtn: {
-        backgroundColor: '#fea9a9',
-        color: 'white',
-        width: '100%',
-        height: 50,
-        textAlign: 'center',
-        alignSelf: 'center',
-        borderRadius: 9,
-        paddingTop: 11,
-        marginTop: 20,
-        fontSize: 16
+        backgroundColor: theme.colors.btnColor,
+        padding: 15,
+        marginTop: 15,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 8
     },
     forRegister: {
-        marginTop: 60,
+        marginTop: 15,
         alignSelf: 'center'
     },
     forRegisterlink: {
