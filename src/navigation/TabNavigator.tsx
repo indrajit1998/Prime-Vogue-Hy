@@ -42,7 +42,7 @@ export default function TabNavigator() {
             })}
         >
             <Tab.Screen name="Home" component={Home} options={{ headerShown: false }} />
-            <Tab.Screen name="Cateogories" component={Cateogories} />
+            <Tab.Screen name="Cateogories" component={Cateogories} options={{ headerShown: false }} />
             <Tab.Screen name="Service" component={Service} />
             <Tab.Screen name="Cart" component={Cart} />
             <Tab.Screen name="Profile" component={Profile} />

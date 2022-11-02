@@ -142,6 +142,7 @@ export default function Home() {
                         )}
                     />
                 </View>
+
                 {/* start */}
                 <View style={styles.productContainer}>
                     <Image source={Girl} style={styles.girlImage} />
@@ -150,16 +151,17 @@ export default function Home() {
                         <Text style={[styles.viewall, { fontSize: 20 }]}>view all</Text>
                     </View>
                 </View>
-                <View style={{ padding: 10, marginTop: -40 }}>
-                    <FlatList
-                        data={[1, 2, 3, 4]}
-                        renderItem={() => (
-                            <ProductCard width={width / 2 - 15} height={200} />
-                        )}
-                        numColumns={2}
-                    />
+                <View style={{ padding: 10, marginTop: -40, flexDirection: "row", flexWrap: "wrap" }}>
+                    {
+                        [1, 2, 3, 4].map((o, i) => (
+                            <View key={i}>
+                                <ProductCard width={width / 2 - 18} height={200} />
+                            </View>
+                        ))
+                    }
                 </View>
                 {/* end */}
+
                 {/* products */}
                 <View style={styles.productGroup}>
                     <View style={styles.productGroupTop}>
@@ -178,6 +180,7 @@ export default function Home() {
                         renderItem={() => (<ProductCard width={150} height={200} />)}
                     />
                 </View>
+
                 {/* start */}
                 <View style={styles.productContainer}>
                     <Image source={Girl} style={styles.girlImage} />
@@ -186,16 +189,17 @@ export default function Home() {
                         <Text style={[styles.viewall, { fontSize: 20 }]}>view all</Text>
                     </View>
                 </View>
-                <View style={{ padding: 10, marginTop: -40 }}>
-                    <FlatList
-                        data={[1, 2, 3, 4]}
-                        renderItem={() => (
-                            <ProductCard width={width / 2 - 15} height={200} />
-                        )}
-                        numColumns={2}
-                    />
+                <View style={{ padding: 10, marginTop: -40, flexDirection: "row", flexWrap: "wrap" }}>
+                    {
+                        [1, 2, 3, 4].map((o, i) => (
+                            <View key={i}>
+                                <ProductCard width={width / 2 - 18} height={200} />
+                            </View>
+                        ))
+                    }
                 </View>
                 {/* end */}
+
                 {/* products */}
                 <View style={styles.productGroup}>
                     <View style={styles.productGroupTop}>
