@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet, Image, Dimensions, FlatList, ScrollView } from 'react-native'
+import { View, Text, TextInput, StyleSheet, Image, Dimensions, FlatList, ScrollView, Pressable } from 'react-native'
 import React from 'react'
 import Container from '../components/Container'
 import { Ionicons } from '@expo/vector-icons'
@@ -89,19 +89,20 @@ const Header = () => (
     </Appbar.Header>
 );
 
-export default function Home() {
+export default function Home({ navigation }: any) {
     return (
         <>
             <Header />
 
             <Container>
-                <View style={styles.searchContainer}>
+                <Pressable style={styles.searchContainer} onPress={() => { navigation.navigate("Search") }}>
                     <Ionicons style={styles.searchIcon} name='search' size={20} color="grey" />
                     <TextInput
                         placeholder='Search for products'
                         style={styles.input}
+                        editable={false}
                     />
-                </View>
+                </Pressable>
                 {/* carousel */}
                 <View>
                     <SwiperFlatList
