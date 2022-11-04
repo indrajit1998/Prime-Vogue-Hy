@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList, Image, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, FlatList, Image, Dimensions, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Container from '../components/Container'
 import { cateogoryData, cateogoryStoresData } from '../config/data'
@@ -19,7 +19,7 @@ const Header = () => (
     </Appbar.Header>
 );
 
-export default function Cateogories() {
+export default function Cateogories({ navigation }: any) {
 
     return (
         <>
@@ -29,13 +29,13 @@ export default function Cateogories() {
                     {
                         cateogoryData.map((o) => (
                             <View key={o.id} style={styles.cateogoryContainer}>
-                                <View style={styles.imgContainer}>
+                                <TouchableOpacity onPress={() => { navigation.navigate("SubCateogory") }} style={styles.imgContainer}>
                                     <Image
                                         source={{ uri: "https://www.pngmart.com/files/15/Apple-iPhone-12-Transparent-Background.png" }}
                                         resizeMode='contain'
                                         style={styles.img}
                                     />
-                                </View>
+                                </TouchableOpacity>
                                 <Text style={styles.title}>{o.title}</Text>
                             </View>
                         ))
