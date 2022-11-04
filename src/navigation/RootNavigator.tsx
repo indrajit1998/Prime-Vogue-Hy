@@ -8,6 +8,9 @@ import Signup from '../screens/Signup';
 import ForgotPassword from '../screens/ForgotPassword';
 import EmailSendConfirmation from '../screens/EmailSendConfirmation';
 import TabNavigator from './TabNavigator';
+import Search from '../screens/Search';
+import ProductList from '../screens/ProductList';
+import SubCateogory from '../screens/SubCateogory';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -21,6 +24,9 @@ export default function RootNavigator() {
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             <Stack.Screen name="EmailSendConfirmation" component={EmailSendConfirmation} />
             <Stack.Screen name="Tabs" component={TabNavigator} />
+            <Stack.Screen name="Search" component={Search} />
+            <Stack.Screen name="ProductList" component={ProductList} />
+            <Stack.Screen name="SubCateogory" component={SubCateogory} />
 
         </>
     );
