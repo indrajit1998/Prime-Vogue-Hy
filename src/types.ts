@@ -8,6 +8,7 @@ export type RootStackParamList = {
     Search: undefined
     ProductList: undefined
     SubCateogory: undefined
+    MyOrder: undefined
 };
 export type BottomTabParamList = {
     Home: undefined;
