@@ -1,10 +1,14 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native'
 import React from 'react'
 import { Rating } from 'react-native-stock-star-rating'
 import { Ionicons } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
 export default function ProductCard({ width, height }: any) {
+    const { push }: any = useNavigation()
     return (
-        <View style={[styles.container, { height, width }]}>
+        <Pressable
+            onPress={() => { push("Details") }}
+            style={[styles.container, { height, width }]}>
             <View>
                 <Ionicons name='heart-outline' size={24} color="black" style={styles.heartIcon} />
                 <Image source={{ uri: "https://i.pinimg.com/736x/51/2b/4b/512b4b870390fac58da5206e88d228d6.jpg" }}
@@ -20,7 +24,7 @@ export default function ProductCard({ width, height }: any) {
                 </View>
                 <Rating stars={3.5} maxStars={5} size={23} />
             </View>
-        </View>
+        </Pressable>
     )
 }
 

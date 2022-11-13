@@ -12,6 +12,7 @@ import Search from '../screens/Search';
 import ProductList from '../screens/ProductList';
 import SubCateogory from '../screens/SubCateogory';
 import MyOrder from '../screens/MyOrder';
+import Details from '../screens/Details';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -29,6 +30,7 @@ export default function RootNavigator() {
             <Stack.Screen name="ProductList" component={ProductList} />
             <Stack.Screen name="SubCateogory" component={SubCateogory} />
             <Stack.Screen name="MyOrder" component={MyOrder} />
+            <Stack.Screen name="Details" component={Details} />
 
         </>
     );
