@@ -23,7 +23,9 @@ const Header = ({ navigation }: any) => (
 
 export default function ProductList({ navigation }: any) {
     const renderItem = ({ item }: any) => (
-        <View style={styles.product}>
+        <Pressable
+            onPress={() => { navigation.push("Details") }}
+            style={styles.product}>
             <Ionicons name='heart-outline' size={24} color="black" style={styles.heartIcon} />
 
             <Image
@@ -45,7 +47,7 @@ export default function ProductList({ navigation }: any) {
                 <Text style={styles.tagline}>Top discount of the sale</Text>
                 <Text style={styles.exchangeOffer}>Upto <Text style={{ fontWeight: "600" }}>Rs 6,000</Text> on exchange</Text>
             </View>
-        </View>
+        </Pressable>
     )
     return (
         <>

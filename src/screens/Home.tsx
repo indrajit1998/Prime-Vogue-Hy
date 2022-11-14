@@ -116,13 +116,15 @@ export default function Home({ navigation }: any) {
                         paginationStyleItem={{ height: 8, width: 8, margin: 6, marginLeft: 0 }}
                         paginationStyleItemActive={{ width: 40, height: 8 }}
                         renderItem={({ item }) => (
-                            <View style={styles.carouselImageContainer}>
+                            <Pressable
+                                onPress={() => { navigation.push("Details") }}
+                                style={styles.carouselImageContainer}>
                                 <Image
                                     source={{ uri: item.image }}
                                     resizeMode="cover"
                                     style={styles.carouselImage}
                                 />
-                            </View>
+                            </Pressable>
                         )}
                     />
                 </View>
