@@ -27,39 +27,34 @@ export default function Login({ navigation }: any) {
         navigation.navigate("Tabs")
     }
     return (
-        <ScrollView>
+        <Container style={styles.container}>
+            <Image source={LoginScreenImage} resizeMode="cover" style={styles.Loginimmg} />
+            <View style={styles.logincomp}>
+                <Text style={styles.logintext}>Login</Text>
 
 
-            <Container style={styles.container}>
-                <Image source={LoginScreenImage} resizeMode="cover" style={styles.Loginimmg} />
-                <View style={styles.logincomp}>
-                    <Text style={styles.logintext}>Login</Text>
-
-
-                    {error && <Text style={styles.error}>{error}</Text>}
-                    {success && <Text style={styles.success}>{success}</Text>}
-                    <View style={styles.inputcomp}>
-
-                        <Icon name="mail" color='gray' size={22} style={styles.attherate} />
-                        <TextInput placeholder="Email Id" style={styles.input1} value={email} onChangeText={onChangeEmail}></TextInput>
-                    </View>
-
-                    <View style={styles.inputcomp}>
-                        <Icon name="lock" color='gray' size={22} style={styles.attherate} />
-                        <View>
-                            <TextInput secureTextEntry={true} placeholder="Password" style={styles.input2} value={password} onChangeText={onChangePassword}></TextInput>
-                            <Text style={styles.forgot} onPress={() => { navigation.navigate("ForgotPassword") }} >forgot?</Text>
-
-                        </View>
-                    </View>
-                    <TouchableHighlight underlayColor={theme.colors.btnUnderlaycolor} onPress={handleSubmit} style={styles.loginbtn}>
-                        <Text style={styles.loginText}>Login</Text>
-                    </TouchableHighlight>
-                    <Text style={styles.forRegister}>New to Prime Vogue?  <Text onPress={() => { navigation.navigate("Signup") }} style={styles.forRegisterlink}>Register</Text></Text>
+                {error && <Text style={styles.error}>{error}</Text>}
+                {success && <Text style={styles.success}>{success}</Text>}
+                <View style={styles.inputcomp}>
+                    <Icon name="mail" color='gray' size={22} style={styles.attherate} />
+                    <TextInput placeholder="Email Id" style={styles.input1} value={email} onChangeText={onChangeEmail}></TextInput>
                 </View>
 
-            </Container>
-        </ScrollView>
+                <View style={styles.inputcomp}>
+                    <Icon name="lock" color='gray' size={22} style={styles.attherate} />
+                    <View>
+                        <TextInput secureTextEntry={true} placeholder="Password" style={styles.input2} value={password} onChangeText={onChangePassword}></TextInput>
+                        <Text style={styles.forgot} onPress={() => { navigation.navigate("ForgotPassword") }} >forgot?</Text>
+
+                    </View>
+                </View>
+                <TouchableHighlight underlayColor={theme.colors.btnUnderlaycolor} onPress={handleSubmit} style={styles.loginbtn}>
+                    <Text style={styles.loginText}>Login</Text>
+                </TouchableHighlight>
+                <Text style={styles.forRegister}>New to Prime Vogue?  <Text onPress={() => { navigation.navigate("Signup") }} style={styles.forRegisterlink}>Register</Text></Text>
+            </View>
+
+        </Container>
     )
 }
 
@@ -68,7 +63,7 @@ const styles = StyleSheet.create({
     container: {
         width,
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         padding: CONTAINER_OUTER_SPACING,
 
     },
@@ -84,7 +79,7 @@ const styles = StyleSheet.create({
 
     Loginimmg: {
         width,
-        height: 350,
+        height: 300,
         marginBottom: 0
     },
     logincomp: {

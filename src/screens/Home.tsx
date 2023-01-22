@@ -1,9 +1,11 @@
-import { View, Text, TextInput, StyleSheet, Image, Dimensions, FlatList, ScrollView } from 'react-native'
+import { View, Text, TextInput, StyleSheet, Image, Dimensions, FlatList, ScrollView, Pressable } from 'react-native'
 import React from 'react'
 import Container from '../components/Container'
 import { Ionicons } from '@expo/vector-icons'
 import theme from '../config/theme'
 import { SwiperFlatList } from 'react-native-swiper-flatlist';
+import { Appbar } from 'react-native-paper';
+
 import ProductCard from '../components/ProductCard'
 import Girl from '../../assets/girl.png'
 
@@ -73,17 +75,34 @@ const typesData: any = [
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcFKIg9H57oCN0aN7A9e7a09PG6JxYpzRaFkynniWNPRZCGYkLBQIDFiLcCKy-M-u1Jsg&usqp=CAU"
     },
 ]
-export default function Home() {
+
+const Header = () => (
+    <Appbar.Header style={styles.header}>
+        <View>
+            <Text style={styles.headerTitle}>Delivery in 15 minutes</Text>
+            <Text>Ranchi</Text>
+        </View>
+        <View style={{ flexDirection: "row" }}>
+            <Ionicons style={{ marginHorizontal: 7 }} name="heart-outline" size={22} color={theme.colors.textColor} />
+            <Ionicons name="notifications-outline" size={22} color={theme.colors.textColor} />
+        </View>
+    </Appbar.Header>
+);
+
+export default function Home({ navigation }: any) {
     return (
-        <Container>
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={styles.searchContainer}>
+        <>
+            <Header />
+
+            <Container>
+                <Pressable style={styles.searchContainer} onPress={() => { navigation.navigate("Search") }}>
                     <Ionicons style={styles.searchIcon} name='search' size={20} color="grey" />
                     <TextInput
                         placeholder='Search for products'
                         style={styles.input}
+                        editable={false}
                     />
-                </View>
+                </Pressable>
                 {/* carousel */}
                 <View>
                     <SwiperFlatList
@@ -97,13 +116,15 @@ export default function Home() {
                         paginationStyleItem={{ height: 8, width: 8, margin: 6, marginLeft: 0 }}
                         paginationStyleItemActive={{ width: 40, height: 8 }}
                         renderItem={({ item }) => (
-                            <View style={styles.carouselImageContainer}>
+                            <Pressable
+                                onPress={() => { navigation.push("Details") }}
+                                style={styles.carouselImageContainer}>
                                 <Image
                                     source={{ uri: item.image }}
                                     resizeMode="cover"
                                     style={styles.carouselImage}
                                 />
-                            </View>
+                            </Pressable>
                         )}
                     />
                 </View>
@@ -124,6 +145,7 @@ export default function Home() {
                         )}
                     />
                 </View>
+
                 {/* start */}
                 <View style={styles.productContainer}>
                     <Image source={Girl} style={styles.girlImage} />
@@ -132,16 +154,17 @@ export default function Home() {
                         <Text style={[styles.viewall, { fontSize: 20 }]}>view all</Text>
                     </View>
                 </View>
-                <View style={{ padding: 10, marginTop: -40 }}>
-                    <FlatList
-                        data={[1, 2, 3, 4]}
-                        renderItem={() => (
-                            <ProductCard width={width / 2 - 15} height={200} />
-                        )}
-                        numColumns={2}
-                    />
+                <View style={{ padding: 10, marginTop: -40, flexDirection: "row", flexWrap: "wrap" }}>
+                    {
+                        [1, 2, 3, 4].map((o, i) => (
+                            <View key={i}>
+                                <ProductCard width={width / 2 - 18} height={200} />
+                            </View>
+                        ))
+                    }
                 </View>
                 {/* end */}
+
                 {/* products */}
                 <View style={styles.productGroup}>
                     <View style={styles.productGroupTop}>
@@ -160,6 +183,7 @@ export default function Home() {
                         renderItem={() => (<ProductCard width={150} height={200} />)}
                     />
                 </View>
+
                 {/* start */}
                 <View style={styles.productContainer}>
                     <Image source={Girl} style={styles.girlImage} />
@@ -168,16 +192,17 @@ export default function Home() {
                         <Text style={[styles.viewall, { fontSize: 20 }]}>view all</Text>
                     </View>
                 </View>
-                <View style={{ padding: 10, marginTop: -40 }}>
-                    <FlatList
-                        data={[1, 2, 3, 4]}
-                        renderItem={() => (
-                            <ProductCard width={width / 2 - 15} height={200} />
-                        )}
-                        numColumns={2}
-                    />
+                <View style={{ padding: 10, marginTop: -40, flexDirection: "row", flexWrap: "wrap" }}>
+                    {
+                        [1, 2, 3, 4].map((o, i) => (
+                            <View key={i}>
+                                <ProductCard width={width / 2 - 18} height={200} />
+                            </View>
+                        ))
+                    }
                 </View>
                 {/* end */}
+
                 {/* products */}
                 <View style={styles.productGroup}>
                     <View style={styles.productGroupTop}>
@@ -214,8 +239,8 @@ export default function Home() {
                         renderItem={() => (<ProductCard width={150} height={200} />)}
                     />
                 </View>
-            </ScrollView>
-        </Container>
+            </Container>
+        </>
     )
 }
 
@@ -292,5 +317,17 @@ const styles = StyleSheet.create({
         fontSize: 35,
         color: "#eee",
         fontWeight: "500"
+    },
+    header: {
+        backgroundColor: theme.colors.background,
+        alignItems: 'center',
+        paddingHorizontal: 24,
+        elevation: 0,
+        justifyContent: "space-between",
+        flexDirection: "row"
+    },
+    headerTitle: {
+        fontWeight: "700",
+        fontSize: 18
     }
 })
